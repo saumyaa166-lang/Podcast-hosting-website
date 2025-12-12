@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login - PodWave</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .login-container {
+      background-color: white;
+      padding: 40px;
+      border-radius: 10px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+      width: 400px;
+      text-align: center;
+    }
+
+    .login-container h1 {
+      font-size: 32px;
+      color: #333;
+      margin-bottom: 10px;
+    }
+
+    .login-container p {
+      font-size: 14px;
+      color: #666;
+      margin-bottom: 30px;
+    }
+
+    .form-group {
+      margin-bottom: 20px;
+      text-align: left;
+    }
+
+    .form-group label {
+      display: block;
+      font-size: 14px;
+      color: #333;
+      margin-bottom: 8px;
+      font-weight: bold;
+    }
+
+    .form-group input {
+      width: 100%;
+      padding: 12px;
+      font-size: 14px;
+      border: 2px solid #ddd;
+      border-radius: 5px;
+      transition: border-color 0.3s;
+    }
+
+    .form-group input:focus {
+      outline: none;
+      border-color: #667eea;
+    }
+
+    .error {
+      color: #e74c3c;
+      font-size: 12px;
+      margin-top: 5px;
+      display: block;
+    }
+
+    .login-btn {
+      width: 100%;
+      padding: 14px;
+      background-color: #667eea;
+      color: white;
+      font-size: 16px;
+      font-weight: bold;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+
+    .login-btn:hover {
+      background-color: #5568d3;
+    }
+
+    .icon {
+      font-size: 50px;
+      margin-bottom: 20px;
+    }
+
+    .footer-text {
+      margin-top: 20px;
+      font-size: 12px;
+      color: #999;
+    }
+
+  </style>
+</head>
+<body>
+
+  <div class="login-container">
+    <div class="icon">🎙</div>
+    <h1>Welcome to PodWave!</h1>
+    <p>Please login to access your podcast dashboard</p>
+
+    <form id="loginForm">
+      <div class="form-group">
+        <label for="username">Username</label>
+        <input type="text" id="username" name="username" placeholder="Enter your username">
+        <span id="usernameError" class="error"></span>
+      </div>        
+
+      <div class="form-group">
+        <label for="password">Password</label>
+        <input type="password" id="password" name="password" placeholder="Enter your password">
+        <span id="passwordError" class="error"></span>
+      </div>
+
+      <button type="button" class="login-btn" onclick="validateLogin()">Login</button>
+    </form>
+
+    <p class="footer-text">&copy; 2024 PodWave. All Rights Reserved.</p>
+  </div>
+
+  <script>
+    function validateLogin() {
+      // Clear previous error messages
+      document.getElementById("usernameError").textContent = "";
+      document.getElementById("passwordError").textContent = "";
+
+      let isValid = true;
+
+      // Get input values
+      const username = document.getElementById("username").value.trim();
+      const password = document.getElementById("password").value.trim();
+
+      // ⭐⭐⭐ CHANGE YOUR CORRECT USERNAME HERE ⭐⭐⭐
+      const correctUsername = "saumya-singh";
+      
+      // ⭐⭐⭐ CHANGE YOUR CORRECT PASSWORD HERE ⭐⭐⭐
+      const correctPassword = "singh.saumya";
+
+      // Username validation
+      if (username === "") {
+        document.getElementById("usernameError").textContent = "Username is required.";
+        isValid = false;
+      } else if (username !== correctUsername) {
+        document.getElementById("usernameError").textContent = "Incorrect username.";
+        isValid = false;
+      }
+
+      // Password validation
+      if (password === "") {
+        document.getElementById("passwordError").textContent = "Password is required.";
+        isValid = false;
+      } else if (password !== correctPassword) {
+        document.getElementById("passwordError").textContent = "Incorrect password.";
+        isValid = false;
+      }
+
+      // If both username and password are correct
+      if (isValid) {
+        alert("Login successful! Welcome to PodWave!");
+        
+        // ⭐⭐⭐ CHANGE YOUR PODCAST WEBSITE FILE NAME HERE ⭐⭐⭐
+        window.location.href = "podcast-home.html";
+      }
+    }
+
+    // Allow Enter key to submit
+    document.getElementById("password").addEventListener("keypress", function(event) {
+      if (event.key === "Enter") {
+        validateLogin();
+      }
+    });
+
+    document.getElementById("username").addEventListener("keypress", function(event) {
+      if (event.key === "Enter") {
+        validateLogin();
+      }
+    });
+  </script>
+
+</body>
+</html>
